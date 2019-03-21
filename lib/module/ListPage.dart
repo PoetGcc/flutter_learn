@@ -63,7 +63,9 @@ class _ListState extends State<ListPage> {
       ),
       body: Container(
         color: Colors.grey[100],
-        child: _getBody(),
+        child: Center(
+          child: _getBody(),
+        ),
       ),
     );
   }
