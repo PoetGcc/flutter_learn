@@ -29,26 +29,35 @@ class _ListState extends State<ListPage> {
     loadData();
   }
 
-  /// 异步加载网络数据
   void loadData() async {
+     var result = await requestData();
+     if (result == null) {
+       return ;
+     }
+     updateData(result);
+  }
+
+  /// 异步加载网络数据
+  Future requestData() async {
     var url = "https://api.douban.com/v2/movie/in_theaters";
     try {
       Response<String> response = await dio.get(url, cancelToken: _token);
       var strJson = response?.data ?? '{}';
-      var result = json.decode(strJson);
-      if (result == null) {
-        return;
-      }
-      setState(() {
-        _title = result['title'];
-        _subjects.clear();
-        _subjects.addAll(result['subjects']);
-      });
+      return json.decode(strJson);
     } catch (e) {
       if (CancelToken.isCancel(e)) {
         Swift.toast('请求取消');
       }
     }
+  }
+
+  /// 更新数据
+  void updateData(result) {
+    setState(() {
+      _title = result['title'];
+      _subjects.clear();
+      _subjects.addAll(result['subjects']);
+    });
   }
 
   @override
