@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/gestures.dart';
+import 'package:flutter_learn/utils/swift_toast.dart';
 import 'package:intl/intl.dart';
-import 'package:flutter_learn/utils/SwiftToast.dart';
+
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -28,7 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
     print('initState() 0000000');
     // 初始化 _recognizer 点击事件
     _recognizer.onTap = () {
-      SwiftToast.toast('_recognizer: ' + _content);
+      Swift.toast('_recognizer: ' + _content);
     };
   }
 
@@ -142,7 +143,7 @@ class _MyHomePageState extends State<MyHomePage> {
       _counter++;
       _content = 'Hello World_' + _counter.toString();
     });
-    SwiftToast.toast(_content);
+    Swift.toast(_content);
   }
 
   /// 在widget重新构建时，Flutter framework会
@@ -188,7 +189,7 @@ class _MyButton extends StatelessWidget {
     var now = new DateTime.now();
     var format = new DateFormat('yyyy-MM-dd HH:mm:ss');
     String time = format.format(now);
-    SwiftToast.toast(time);
+    Swift.toast(time);
   }
 
   @override

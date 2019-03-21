@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_learn/utils/SwiftToast.dart';
 import 'dart:convert';
 import 'package:flutter_learn/utils/http.dart';
+import 'package:flutter_learn/utils/swift_toast.dart';
 
 /// List Page 页
 /// [Flutter & ListView (Liusilong)](https://www.jianshu.com/p/2ab1f6086024)
@@ -47,7 +47,7 @@ class _ListState extends State<ListPage> {
       });
     } catch (e) {
       if (CancelToken.isCancel(e)) {
-        SwiftToast.toast('请求取消');
+        Swift.toast('请求取消');
       }
     }
   }
@@ -97,7 +97,7 @@ class _ListState extends State<ListPage> {
     return GestureDetector(
       // item 点击
       onTap: () {
-        SwiftToast.toast(subject['title']);
+        Swift.toast(subject['title']);
       },
       // item 内容
       child: Card(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 /// 吐司
-class SwiftToast {
+class Swift {
   static void toast(String content) {
     Fluttertoast.showToast(
         msg: content,

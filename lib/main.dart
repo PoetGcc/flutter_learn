@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learn/module/HomePage.dart';
-import 'package:flutter_learn/module/ListPage.dart';
+import 'package:flutter_learn/module/home_page.dart';
+import 'package:flutter_learn/module/list_page.dart';
 
 /// 入口
 void main() => runApp(MyApp());
