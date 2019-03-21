@@ -29,6 +29,7 @@ class _ListState extends State<ListPage> {
     loadData();
   }
 
+  /// 加载数据
   void loadData() async {
     var result = await requestData();
     if (result == null) {
@@ -93,11 +94,23 @@ class _ListState extends State<ListPage> {
           valueColor: AlwaysStoppedAnimation(Colors.redAccent));
     }
     // ListView
-    return ListView.builder(
-        itemCount: _subjects.length,
-        itemBuilder: (BuildContext context, int position) {
-          return getItem(_subjects[position]);
-        });
+    return RefreshIndicator(
+      onRefresh: _onRefresh,
+      child: ListView.builder(
+          itemCount: _subjects.length,
+          itemBuilder: (BuildContext context, int position) {
+            return getItem(_subjects[position]);
+          }),
+    );
+  }
+
+  /// 下拉刷新
+  Future<void> _onRefresh() async {
+    var result = await requestData();
+    if (result == null) {
+      return;
+    }
+    updateData(result);
   }
 
   /// 构建 item
