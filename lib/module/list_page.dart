@@ -31,10 +31,9 @@ class _ListState extends State<ListPage> {
 
   /// 异步加载网络数据
   void loadData() async {
-    var loadRUL = "https://api.douban.com/v2/movie/in_theaters";
+    var url = "https://api.douban.com/v2/movie/in_theaters";
     try {
-      Response<String> response =
-          await DioHttp.instance.dio().get(loadRUL, cancelToken: _token);
+      Response<String> response = await dio.get(url, cancelToken: _token);
       var strJson = response?.data ?? '{}';
       var result = json.decode(strJson);
       if (result == null) {
