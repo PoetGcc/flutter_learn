@@ -30,11 +30,11 @@ class _ListState extends State<ListPage> {
   }
 
   void loadData() async {
-     var result = await requestData();
-     if (result == null) {
-       return ;
-     }
-     updateData(result);
+    var result = await requestData();
+    if (result == null) {
+      return;
+    }
+    updateData(result);
   }
 
   /// 异步加载网络数据
