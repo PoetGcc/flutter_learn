@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:dio/dio.dart';
 import 'dart:convert';
+
 import 'package:flutter_learn/utils/http.dart';
 import 'package:flutter_learn/utils/swift_toast.dart';
 
@@ -89,12 +90,13 @@ class _ListState extends State<ListPage> {
   /// ListView 内容
   Widget _getBody() {
     // 进度提示
-    if (_subjects.length == 0) {
+    if (_subjects.isEmpty) {
       return CircularProgressIndicator(
           valueColor: AlwaysStoppedAnimation(Colors.redAccent));
     }
     // ListView
     return RefreshIndicator(
+      color: Colors.redAccent,
       onRefresh: _onRefresh,
       child: ListView.builder(
           itemCount: _subjects.length,
